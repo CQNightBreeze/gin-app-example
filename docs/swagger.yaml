@@ -1,8 +1,16 @@
 definitions:
+  user.GetUserInfoConditionalRes:
+    properties:
+      userId:
+        type: integer
+    type: object
   user.GetUserInfoRes:
     properties:
-      authorization:
+      username:
+        description: 账号
         type: string
+    required:
+    - username
     type: object
   user.SignInReq:
     properties:
@@ -32,7 +40,7 @@ paths:
       - application/json
       description: 获取用户信息
       parameters:
-      - description: toke信息
+      - description: 授权信息
         in: header
         name: Authorization
         required: true
@@ -47,6 +55,29 @@ paths:
       security:
       - auth: []
       summary: 获取用户信息
+      tags:
+      - user
+  /c/UserHandler/GetUserInfoConditional:
+    get:
+      consumes:
+      - application/json
+      description: 根绝条件获取用户
+      parameters:
+      - description: 用户id
+        in: query
+        name: UserId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.GetUserInfoConditionalRes'
+      security:
+      - auth: []
+      summary: 根绝条件获取用户
       tags:
       - user
   /c/UserHandler/SignIn:

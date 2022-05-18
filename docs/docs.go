@@ -37,7 +37,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "toke信息",
+                        "description": "授权信息",
                         "name": "Authorization",
                         "in": "header",
                         "required": true
@@ -48,6 +48,43 @@ const docTemplate = `{
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/user.GetUserInfoRes"
+                        }
+                    }
+                }
+            }
+        },
+        "/c/UserHandler/GetUserInfoConditional": {
+            "get": {
+                "security": [
+                    {
+                        "auth": []
+                    }
+                ],
+                "description": "根绝条件获取用户",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "根绝条件获取用户",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "用户id",
+                        "name": "UserId",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/user.GetUserInfoConditionalRes"
                         }
                     }
                 }
@@ -89,10 +126,22 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "user.GetUserInfoRes": {
+        "user.GetUserInfoConditionalRes": {
             "type": "object",
             "properties": {
-                "authorization": {
+                "userId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "user.GetUserInfoRes": {
+            "type": "object",
+            "required": [
+                "username"
+            ],
+            "properties": {
+                "username": {
+                    "description": "账号",
                     "type": "string"
                 }
             }

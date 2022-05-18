@@ -13,6 +13,6 @@ func ClientApis(r *gin.Engine) {
 
 	clientApi.POST("/UserHandler/SignIn", userHandler.SignIn)
 	clientApi.GET("/UserHandler/GetUserInfo", userHandler.GetUserInfo)
-	clientApi.POST("/UserHandler/GetUserInfoConditional", userHandler.GetUserInfoConditional)
+	clientApi.GET("/UserHandler/GetUserInfoConditional", userHandler.GetUserInfoConditional)
 
 }
