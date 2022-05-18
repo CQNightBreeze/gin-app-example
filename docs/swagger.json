@@ -1,0 +1,117 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/c/UserHandler/GetUserInfo": {
+            "get": {
+                "security": [
+                    {
+                        "auth": []
+                    }
+                ],
+                "description": "获取用户信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "获取用户信息",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "toke信息",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/user.GetUserInfoRes"
+                        }
+                    }
+                }
+            }
+        },
+        "/c/UserHandler/SignIn": {
+            "post": {
+                "description": "账号密码登录",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "账号密码登录",
+                "parameters": [
+                    {
+                        "description": "body传参",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/user.SignInReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/user.SignInRes"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "user.GetUserInfoRes": {
+            "type": "object",
+            "properties": {
+                "authorization": {
+                    "type": "string"
+                }
+            }
+        },
+        "user.SignInReq": {
+            "type": "object",
+            "required": [
+                "username"
+            ],
+            "properties": {
+                "password": {
+                    "description": "密码",
+                    "type": "string"
+                },
+                "username": {
+                    "description": "账号",
+                    "type": "string"
+                }
+            }
+        },
+        "user.SignInRes": {
+            "type": "object",
+            "properties": {
+                "token": {
+                    "description": "token",
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

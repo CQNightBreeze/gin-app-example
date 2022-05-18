@@ -1,0 +1,74 @@
+definitions:
+  user.GetUserInfoRes:
+    properties:
+      authorization:
+        type: string
+    type: object
+  user.SignInReq:
+    properties:
+      password:
+        description: 密码
+        type: string
+      username:
+        description: 账号
+        type: string
+    required:
+    - username
+    type: object
+  user.SignInRes:
+    properties:
+      token:
+        description: token
+        type: string
+      type:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /c/UserHandler/GetUserInfo:
+    get:
+      consumes:
+      - application/json
+      description: 获取用户信息
+      parameters:
+      - description: toke信息
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.GetUserInfoRes'
+      security:
+      - auth: []
+      summary: 获取用户信息
+      tags:
+      - user
+  /c/UserHandler/SignIn:
+    post:
+      consumes:
+      - application/json
+      description: 账号密码登录
+      parameters:
+      - description: body传参
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/user.SignInReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.SignInRes'
+      summary: 账号密码登录
+      tags:
+      - user
+swagger: "2.0"
