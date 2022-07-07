@@ -22,7 +22,7 @@ type GetUserInfoConditionalRes struct {
 // @Summary      根绝条件获取用户
 // @Description  根绝条件获取用户
 // @Tags         user
-// @Param   UserId     query    int     true        "用户id"
+// @Param        UserId  query  int  true  "用户id"
 // @Accept       json
 // @Produce      json
 // @Success      200  {object}  GetUserInfoConditionalRes
@@ -50,7 +50,7 @@ type GetUserInfoRes struct {
 // @Summary      获取用户信息
 // @Description  获取用户信息
 // @Tags         user
-// @Param   Authorization     header    string     true        "授权信息"
+// @Param        Authorization  header  string  true  "授权信息"
 // @Accept       json
 // @Produce      json
 // @Success      200  {object}  GetUserInfoRes

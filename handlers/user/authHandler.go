@@ -21,7 +21,7 @@ type SignInRes struct {
 // @Summary      账号密码登录
 // @Description  账号密码登录
 // @Tags         user
-// @Param        body   body     SignInReq  true  "body传参"
+// @Param        body  body  SignInReq  true  "body传参"
 // @Accept       json
 // @Produce      json
 // @Success      200  {object}  SignInRes
