@@ -1,4 +1,4 @@
-package mgoUtil
+package mgo_srv
 
 import (
 	"fmt"

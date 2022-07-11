@@ -1,4 +1,4 @@
-package dbUtil
+package sql_srv
 
 import (
 	"fmt"

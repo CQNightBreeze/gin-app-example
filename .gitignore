@@ -1,3 +1,5 @@
 /config/.envconfig.json
 logs/*
 __debug_bin*
+main.exe
+main
