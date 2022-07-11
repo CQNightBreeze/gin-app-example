@@ -1,7 +1,7 @@
 package apis
 
 import (
-	admin "gin-app-example/manageHandlers/admin"
+	admin "gin-app-example/manage_handlers/admin"
 
 	"github.com/gin-gonic/gin"
 )
